@@ -41,6 +41,20 @@ class PdoGsb{
 		return $ligne;
 	}
 
+	   /**
+     * Retourne les informations d'un gestionnaire
+     * @param $login
+     * @param $mdp
+     * @return mixed l'id, le nom et le prénom sous la forme d'un tableau associatif
+     */
+	public function getInfosGestionnaire($login, $mdp){
+		$req = "select gestion.id as id, gestion.nom as nom, gestion.prenom as prenom from gestion
+        where gestion.login='" . $login . "' and gestion.mdp='" . $mdp ."'";
+    	$rs = $this->monPdo->query($req);
+		$ligne = $rs->fetch();
+		return $ligne;
+	}
+
     /**
      * Retourne sous forme d'un tableau associatif toutes les lignes de frais au forfait
      *  concernées par les deux arguments

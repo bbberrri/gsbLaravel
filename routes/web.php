@@ -23,3 +23,6 @@ Route::controller(gererFraisController::class)->group(function () {
     Route::post('/sauvegarderFrais', 'sauvegarderFrais')->name('chemin_sauvegardeFrais');
 });
 
+// Route::controller(editerFraisController::class)->groupe(function () {
+//     Route::get('/editerFrais', '')->name('chemin_');
+// });
