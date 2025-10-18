@@ -24,7 +24,7 @@ class connexionController extends Controller
                 }
                 // Connexion gestionnaire si le gestionnaire existe dans la base
                 else{
-                    return view('editfrais');
+                    return view('sommaireGestion');
                 }
             }
             // Connexion visiteur si le visiteur existe dans la base
