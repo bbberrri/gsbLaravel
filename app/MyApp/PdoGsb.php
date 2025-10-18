@@ -31,7 +31,7 @@ class PdoGsb{
      * Retourne les informations d'un visiteur
      * @param $login
      * @param $mdp
-     * @return mixed l'id, le nom et le prénom sous la forme d'un tableau associatif
+     * @return mixed l'id, le nom, le prénom et le type d'acteur sous la forme d'un tableau associatif
      */
 	public function getInfosVisiteur($login, $mdp){
 		$req = "select visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom from visiteur
@@ -45,7 +45,7 @@ class PdoGsb{
      * Retourne les informations d'un gestionnaire
      * @param $login
      * @param $mdp
-     * @return mixed l'id, le nom et le prénom sous la forme d'un tableau associatif
+     * @return mixed l'id, le nom, le prénom et le type d'acteur sous la forme d'un tableau associatif
      */
 	public function getInfosGestionnaire($login, $mdp){
 		$req = "select gestion.id as id, gestion.nom as nom, gestion.prenom as prenom from gestion
