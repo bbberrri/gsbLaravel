@@ -61,6 +61,24 @@ body {
     height: 27em;
 }
 
+.column {
+    border-radius:10px 10px 0px 0px;
+    float: left;
+    width: 30%;
+    padding: 10px;
+    height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #f2f2f2;
+    font-size: larger;
+    color: #404040;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
 /* pour r�tablir le mauvais effet sur les nav. modernes */
 

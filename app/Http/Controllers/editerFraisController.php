@@ -5,9 +5,10 @@ use PdoGsb;
 use MyDate;
 class editerFraisController extends Controller
 {
-    function editerEtatFrais(){
+    function editerEtatFraisAnnee(){
         if(session('gestionnaire') != null){
-            return('test');
+            $gestionnaire = session('gestionnaire');
+            return view('editEtatFraisAnnee')->with('gestionnaire', $gestionnaire);
         }
     }
 }

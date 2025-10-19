@@ -25,5 +25,6 @@ Route::controller(gererFraisController::class)->group(function () {
 });
 
 Route::controller(editerFraisController::class)->group(function () {
-    Route::get('/editerFrais', 'editerEtatFrais')->name('chemin_editEtatFrais');
+    Route::get('/editerFraisAnnee', 'editerEtatFraisAnnee')->name('chemin_editEtatFrais');
+    // Route::get('/')
 });
