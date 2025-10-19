@@ -24,13 +24,14 @@ class connexionController extends Controller
                 }
                 // Connexion gestionnaire si le gestionnaire existe dans la base
                 else{
-                    return view('sommaireGestion');
+                    session(['gestionnaire' => $gestionnaire]);
+                    return view('sommaireGestion')->with('gestionnaire', session('gestionnaire'));
                 }
             }
             // Connexion visiteur si le visiteur existe dans la base
             else{
                 session(['visiteur' => $visiteur]);
-                return view('sommaire')->with('visiteur',session('visiteur'));
+                return view('sommaire')->with('visiteur', session('visiteur'));
             }
         }
 

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\connexionController;
 use App\Http\Controllers\etatFraisController;
 use App\Http\Controllers\gererFraisController;
+use App\Http\Controllers\editerFraisController;
 
 // Création des groupes de routes
 Route::controller(connexionController::class)->group(function () {
@@ -23,6 +24,6 @@ Route::controller(gererFraisController::class)->group(function () {
     Route::post('/sauvegarderFrais', 'sauvegarderFrais')->name('chemin_sauvegardeFrais');
 });
 
-// Route::controller(editerFraisController::class)->groupe(function () {
-//     Route::get('/editerFrais', '')->name('chemin_');
-// });
+Route::controller(editerFraisController::class)->group(function () {
+    Route::get('/editerFrais', 'editerEtatFrais')->name('chemin_editEtatFrais');
+});
