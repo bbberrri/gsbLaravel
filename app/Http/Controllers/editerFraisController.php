@@ -11,4 +11,18 @@ class editerFraisController extends Controller
             return view('editEtatFraisAnnee')->with('gestionnaire', $gestionnaire);
         }
     }
+
+    function editerEtatFraisType(){
+        if(session('gestionnaire') != null){
+            $gestionnaire = session('gestionnaire');
+            return view('editEtatFraisType')->with('gestionnaire', $gestionnaire);
+        }
+    }
+
+    function editerEtatFraisVisiteur(){
+        if(session('gestionnaire') != null){
+            $gestionnaire = session('gestionnaire');
+            return view('editEtatFraisVisiteur')->with('gestionnaire', $gestionnaire);
+        }
+    }
 }

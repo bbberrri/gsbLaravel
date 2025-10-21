@@ -74,6 +74,26 @@ body {
     color: #404040;
 }
 
+.column-clicked {
+    border-radius:10px 10px 0px 0px;
+    border-style: solid;
+    border-color: #77AADD #77AADD white #77AADD;
+    float: left;
+    width: 30%;
+    padding: 10px;
+    height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: larger;
+    color: #404040;
+}
+
+.column a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 .row:after {
     content: "";
     display: table;
