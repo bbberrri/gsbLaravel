@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="infos">
-                
+                {{ var_dump($lesAnnees) }}
             </div>
         </div>
     @endsection

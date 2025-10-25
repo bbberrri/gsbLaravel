@@ -173,11 +173,10 @@ class PdoGsb{
      * Retourne les mois pour lesquels un visiteur a une fiche de frais
      * @param $idVisiteur
      * @return array retourne un tableau associatif de clé un mois -aaaamm- et de valeurs l'année et le mois correspondant
-     * retourne un tableau associatif de clé un mois -aaaamm- et de valeurs l'année et le mois correspondant
      */
 	public function getLesMoisDisponibles($idVisiteur){
-		$req = "select fichefrais.mois as mois from  fichefrais where fichefrais.idvisiteur ='$idVisiteur'
-		order by fichefrais.mois desc ";
+		$req = "select fichefrais.mois as mois from fichefrais where fichefrais.idvisiteur ='$idVisiteur'
+		order by fichefrais.mois desc";
 		$res = $this->monPdo->query($req);
 		$lesMois =array();
 		$laLigne = $res->fetch();
@@ -193,6 +192,29 @@ class PdoGsb{
 			$laLigne = $res->fetch();
 		}
 		return $lesMois;
+	}
+
+	/**
+	 * Retourne les années pour lesquels des frais ont été enregistrés
+	 * @return array retourne un tableau indexé des années
+	 */
+	public function getLesAnneesDisponibles(){
+		$req = "select fichefrais.mois as mois from fichefrais order by fichefrais.mois desc";
+		$res = $this->monPdo->query($req);
+		$lesMois = array();
+		$lesAnnees = array();
+
+		$laLigne = $res->fetch();
+		while($laLigne != null){
+			$mois = $laLigne['mois'];
+
+			$numAnnee = substr($mois, 0, 4);
+			if(!in_array($numAnnee, $lesAnnees)){
+				array_push($lesAnnees, $numAnnee);
+			}
+			$laLigne = $res->fetch();
+		}
+		return $lesAnnees;
 	}
 
     /**
