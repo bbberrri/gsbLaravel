@@ -13,7 +13,16 @@
                 </div>
             </div>
             <div class="infos">
-                {{ var_dump($lesAnnees) }}
+                @foreach($lesAnnees as $uneAnnee)
+                    <div>
+                        <h3>{{ $uneAnnee }}</h3>
+                        @foreach($lesVisiteurs[$uneAnnee] as $unVisiteur)
+                            <div>
+                                {{ $unVisiteur }}
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
             </div>
         </div>
     @endsection

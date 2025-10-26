@@ -178,7 +178,7 @@ class PdoGsb{
 		$req = "select fichefrais.mois as mois from fichefrais where fichefrais.idvisiteur ='$idVisiteur'
 		order by fichefrais.mois desc";
 		$res = $this->monPdo->query($req);
-		$lesMois =array();
+		$lesMois = array();
 		$laLigne = $res->fetch();
 		while($laLigne != null)	{
 			$mois = $laLigne['mois'];
@@ -201,7 +201,6 @@ class PdoGsb{
 	public function getLesAnneesDisponibles(){
 		$req = "select fichefrais.mois as mois from fichefrais order by fichefrais.mois desc";
 		$res = $this->monPdo->query($req);
-		$lesMois = array();
 		$lesAnnees = array();
 
 		$laLigne = $res->fetch();
@@ -215,6 +214,34 @@ class PdoGsb{
 			$laLigne = $res->fetch();
 		}
 		return $lesAnnees;
+	}
+
+	/**
+	 * Retourne les visiteurs ayant enregistré des frais pour chaque année
+	 * @return array retourne un tableau à deux dimensions de clé année et de valeur tableau indexé des visiteurs ayant enregistré des frais pour l'année en clé
+	 */
+	public function getLesVisiteursParAnnee(){
+		$req = "select fichefrais.idVisiteur, visiteur.nom, visiteur.prenom, fichefrais.mois from fichefrais inner join visiteur
+				on fichefrais.idVisiteur = visiteur.id order by fichefrais.mois desc";
+		$res = $this->monPdo->query($req);
+		$lesVisiteurs = array();
+
+		$laLigne = $res->fetch();
+		while($laLigne != null){
+			$mois = $laLigne['mois'];
+
+			$numAnnee = substr($mois, 0, 4);
+			if(!array_key_exists($numAnnee, $lesVisiteurs)) {
+				$lesVisiteurs[$numAnnee] = array();
+			}
+			
+			$appellation = $laLigne['nom'] . " " . $laLigne['prenom'];
+			if(!in_array($appellation, $lesVisiteurs[$numAnnee])) {
+				array_push($lesVisiteurs[$numAnnee], $appellation);
+			}
+			$laLigne = $res->fetch();
+		}
+		return $lesVisiteurs;
 	}
 
     /**

@@ -9,9 +9,11 @@ class editerFraisController extends Controller
         if(session('gestionnaire') != null){
             $gestionnaire = session('gestionnaire');
             $lesAnnees = PdoGsb::getLesAnneesDisponibles();
+            $lesVisiteurs = PdoGsb::getLesVisiteursParAnnee();
             return view('editEtatFraisAnnee')
                     ->with('gestionnaire', $gestionnaire)
-                    ->with('lesAnnees', $lesAnnees);
+                    ->with('lesAnnees', $lesAnnees)
+                    ->with('lesVisiteurs', $lesVisiteurs);
         }
     }
 
