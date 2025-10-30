@@ -196,7 +196,8 @@ class PdoGsb{
 
 	/**
 	 * Retourne les visiteurs ayant enregistré des frais pour chaque année
-	 * @return array retourne un tableau à deux dimensions de clé année et de valeur tableau indexé des visiteurs ayant enregistré des frais pour l'année en clé
+	 * @return array retourne un tableau à deux dimensions de clé année et de valeur tableau associatif des visiteurs ayant enregistré
+	 * des frais pour l'année en clé, accompagné de leur id
 	 */
 	public function getLesVisiteursParAnnee(){
 		$req = "select fichefrais.idVisiteur, visiteur.nom, visiteur.prenom, fichefrais.mois from fichefrais inner join visiteur
@@ -214,8 +215,9 @@ class PdoGsb{
 			}
 			
 			$appellation = $laLigne['nom'] . " " . $laLigne['prenom'];
+			$id = $laLigne['idVisiteur'];
 			if(!in_array($appellation, $lesVisiteurs[$numAnnee])) {
-				array_push($lesVisiteurs[$numAnnee], $appellation);
+				$lesVisiteurs[$numAnnee][$appellation] = $id;
 			}
 			$laLigne = $res->fetch();
 		}

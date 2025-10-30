@@ -16,10 +16,9 @@
                 @foreach(array_keys($lesVisiteurs) as $uneAnnee)
                     <div>
                         <h3>{{ $uneAnnee }}</h3>
-                        @foreach($lesVisiteurs[$uneAnnee] as $unVisiteur)
-                            <div>
-                                {{ $unVisiteur }}
-                            </div>
+                        @foreach(array_keys($lesVisiteurs[$uneAnnee]) as $unVisiteur)
+                            <div>{{ $unVisiteur }}</div>
+                            <div></div>
                         @endforeach
                     </div>
                 @endforeach
