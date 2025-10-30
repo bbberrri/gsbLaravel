@@ -8,11 +8,9 @@ class editerFraisController extends Controller
     function editerEtatFraisAnnee(){
         if(session('gestionnaire') != null){
             $gestionnaire = session('gestionnaire');
-            $lesAnnees = PdoGsb::getLesAnneesDisponibles();
             $lesVisiteurs = PdoGsb::getLesVisiteursParAnnee();
             return view('editEtatFraisAnnee')
                     ->with('gestionnaire', $gestionnaire)
-                    ->with('lesAnnees', $lesAnnees)
                     ->with('lesVisiteurs', $lesVisiteurs);
         }
     }

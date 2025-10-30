@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="infos">
-                @foreach($lesAnnees as $uneAnnee)
+                @foreach(array_keys($lesVisiteurs) as $uneAnnee)
                     <div>
                         <h3>{{ $uneAnnee }}</h3>
                         @foreach($lesVisiteurs[$uneAnnee] as $unVisiteur)
