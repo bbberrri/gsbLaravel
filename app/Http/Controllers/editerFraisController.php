@@ -22,11 +22,14 @@ class editerFraisController extends Controller
                     $lesMoisVisiteur = array();
                     foreach($les_mois as $infosMois)
                     {
-                        $numMois = $infosMois["numMois"];
-                        array_push($lesMoisVisiteur, $moisA_N[$numMois]);
+                        if($infosMois["numAnnee"] == $uneAnnee)
+                        {
+                            $numMois = $infosMois["numMois"];
+                            array_push($lesMoisVisiteur, $moisA_N[$numMois]);
+                        }
                     }
 
-                    $lesMois[$uneAnnee] = array($unVisiteur => array("id" => $id, "mois" => $lesMoisVisiteur));
+                    $lesMois[$uneAnnee][$unVisiteur] = array("id" => $id, "mois" => $lesMoisVisiteur);
                 }
             }
 
