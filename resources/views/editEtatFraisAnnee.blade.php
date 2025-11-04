@@ -16,10 +16,12 @@
             <div class="infos">
                 @foreach(array_keys($lesVisiteurs) as $uneAnnee)
                     <div>
-                        <h3>{{ $uneAnnee }}</h3>
+                        <h1>{{ $uneAnnee }}</h1>
                         @foreach(array_keys($lesVisiteurs[$uneAnnee]) as $unVisiteur)
-                            <div>{{ $unVisiteur }}</div>
-                            <div></div>
+                            <div><h3>{{ $unVisiteur }}</h3></div>
+                            @foreach($lesMois[$uneAnnee][$unVisiteur]["mois"] as $unMois)
+                                <div>{{ $unMois }}</div>
+                            @endforeach    
                         @endforeach
                     </div>
                 @endforeach
