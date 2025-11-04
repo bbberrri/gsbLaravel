@@ -12,6 +12,7 @@
                     <a href="{{ route('chemin_editFraisVisiteur') }}">Par visiteur</a>
                 </div>
             </div>
+            {{ var_dump($lesMois) }}
             <div class="infos">
                 @foreach(array_keys($lesVisiteurs) as $uneAnnee)
                     <div>
